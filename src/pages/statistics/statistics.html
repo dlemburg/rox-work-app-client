@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Statistics</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h3 text-center>Filters</h3>
+    <ion-row>
+      <ion-col col-6 text-center>
+        <ion-item>
+          <ion-label text-center>Start Date</ion-label>
+          <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" [(ngModel)]="startDate" (ionChange)="filterChange()"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label text-center>End Date</ion-label>
+          <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" [(ngModel)]="endDate" (ionChange)="filterChange()"></ion-datetime>
+        </ion-item>
+      </ion-col>    
+    </ion-row>
+    <div class="totals" margin-top *ngIf="state.avgForecastHours && state.avgActualHours">
+      <div>Average Forecast Hours:  {{ state.avgForecastHours }}</div>
+      <div>Average Actual Hours:  {{ state.avgActualHours }}</div>
+    </div>
+
+
+</ion-content>

@@ -1,0 +1,78 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Truck Data</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-margin no-padding color="primary" text-center>
+    {{ dateFiltered }}
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item margin-top>
+    <ion-label floating>Forcast GM cases</ion-label>
+    <ion-input [(ngModel)]="state.forecastGM" (ngModelChange)="onChange()" type="tel"></ion-input>
+  </ion-item>
+
+  <ion-item margin-top>
+    <ion-label floating>Forcast C&S cases</ion-label>
+    <ion-input [(ngModel)]="state.forecastCS" (ngModelChange)="onChange()" type="tel"></ion-input>
+  </ion-item>
+
+  <ion-item margin-top>
+    <ion-label floating>Actual GM cases</ion-label>
+    <ion-input [(ngModel)]="state.actualGM" (ngModelChange)="onChange()" type="tel"></ion-input>
+  </ion-item>
+
+  <ion-item margin-top>
+    <ion-label floating>Actual C&S cases</ion-label>
+    <ion-input [(ngModel)]="state.actualCS" (ngModelChange)="onChange()" type="tel"></ion-input>
+  </ion-item>
+
+  <ion-item margin-top>
+    <ion-label >Scheduled Hours</ion-label>
+    <ion-input [(ngModel)]="state.scheduledHours" type="tel"></ion-input>
+  </ion-item>
+
+  <ion-item margin-top>
+    <ion-label >Flex Hours</ion-label>
+    <ion-input [(ngModel)]="state.flexHours" type="tel"></ion-input>
+  </ion-item>
+
+  <div class="totals" margin-top>
+    <div> Note: calculated by executing (cases / 25)</div>
+    <div>Total Forecast Hours: <span>{{ state.totalForecastHours }}</span></div>
+    <div>Total Actual Hours: <span>{{ state.totalActualHours }}</span></div>
+  </div>
+
+  <button (click)="submit()" type="button" class="width-60 app-btn align-center" color="primary" ion-button block margin-top>Submit</button>
+
+</ion-content>
+
+
+<!--
+  -entering cases into input boxes
+  -25 cases per hour
+
+  M/T/TH/SA
+
+    INPUTS
+    - Forecast GM
+    - Forecast C&S
+    - Actual GM
+    - Actual C&S
+
+    I NEED TO TOTAL THIS UP
+    - Total Forecast GM  (Forecast GM + Forecast C&S)
+    - Total Actual (Actual GM + Actual C&S)
+
+    - scheduled hours (not include you)
+    - flex hours (includes yourself and other team members)
+  
+
+
+  SU/W/F
+
+    Same as above, but GM only
+
+-->

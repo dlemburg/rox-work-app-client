@@ -14,3 +14,31 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+* {box-sizing: border-box;}
+
+body {font-family: Verdana, sans-serif;}
+
+.red { border: 1px solid red;}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.font-10 {
+    font-size: 10px;
+}
+.font-12 {
+    font-size: 12px;
+}
+
+.font-green {
+    color: green;
+}
+.font-red {
+    color: red;
+}
+
+.bold {
+    font-weight: bold;
+}

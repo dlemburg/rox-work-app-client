@@ -1,17 +1,93 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>    
+      <img height="44" src="img/target-logo.jpeg"/>
+      &nbsp; Rox Work Application
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content no-padding>
+  <div class="month-container">      
+    <div (click)="changeMonth('subtract')" class="prev hover">&#10094;</div>
+    <div (click)="changeMonth('add')" class="next hover">&#10095;</div>
+    <div>
+      {{state.currentMonth.name}}
+      <span class="year">{{state.currentYear}}</span>
+    </div>
+  </div>
+
+  <div class="days-container">
+    <div *ngFor="let x of days; let i = index;">{{x.abbrev}}</div>
+  </div>
+
+  <div *ngIf="squares.length" class="squares">  
+    <div class="square" [ngClass]="{'is-active': isActive(x), 'gray-square': x === null}"  (click)="navDate(x)" tappable *ngFor="let x of squares; let i = index;">
+      
+      <!-- all in-square content positioned absolutely -->
+
+      <!-- date -->
+      <div tappable class="day-square" *ngIf="x !== null">
+        <span class="in-square-day-of-month">{{x.date}}</span>
+      </div>
+
+      <!-- C&S truck  -->
+      <span class="blue-square in-square-blue-square-position" *ngIf="x !== null && isCSTruck(x.date)"></span>
+      
+      <!-- green-red-analytics -->
+      <div *ngIf="x !== null" class="in-square-analytics" text-center>
+        <div [ngClass]="{'font-green': isGreen(x.effeciency), 'font-red': !isGreen(x.efficiency) }">
+          
+          <span *ngIf="x.efficiency > 0">+ </span>    
+          <span *ngIf="x.efficiency">{{ x.efficiency }}%</span>       
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <h3 text-center margin-top>Calendar Key</h3>
+  <div class="bold font-12 key-container">
+    <div>+ &nbsp; = &nbsp; more actual hours than forecasted hours</div>
+    <div>- &nbsp; = &nbsp; less actual hours than forecasted hours</div>
+    <div class="font-green">Green &nbsp; = &nbsp; &nbsp; Better than +/- 5% efficiency</div>
+    <div class="font-red">Red &nbsp; = &nbsp; &nbsp; &nbsp; Worse than +/- 5% efficiency</div>
+    <div><span class="blue-square">---</span>  &nbsp; = &nbsp; C&S Truck days</div>
+
+  </div>
 </ion-content>
+
+<!--
+ [ngClass]="{'font-red':, 'font-green': }
+  actual vs forecast
+
+  green/red 
+
+  green = within 5% +/-
+  red = above +/- 5%
+
+-->
+
+
+<!--
+<div class="month-container">      
+  <div class="prev">&#10094;</div>
+  <div class="next">&#10095;</div>
+  <div>
+    {{state.currentMonth.month}}
+    <span class="year">{{currentYear}}</span>
+  </div>
+</div>
+
+<div class="days-container">
+  <div *ngFor="let x of days; let i = index;">{{x.abbrev}}</div>
+</div>
+
+<div class="squares">  
+  <div *ngFor="let x of squares; let i = index;">
+    <div class="day-square" *ngIf="isDaySquare(i, x)">
+      <span class="day-of-month">{{ x - state.firstDayOfMonth }}</span>
+    </div>
+    <div class="gray-square" *ngIf="isGraySquare(i,x)">x</div>
+  </div>
+</div>
+-->

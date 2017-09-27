@@ -1,3 +1,153 @@
 page-home {
 
+    * {box-sizing: border-box;}
+
+    body {font-family: Verdana, sans-serif;}
+
+
+    .month-container {
+        color: white;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0;
+        padding: 18px;
+        width: 100%;
+        background: map-get($colors, primary);
+        text-align: center;
+    }
+
+    .month-container .prev {
+        float: left;
+    }
+
+    .month-container .next {
+        float: right;
+    }
+
+    .days-container {
+        background-color: #ddd;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .days-container > div {
+        display: inline-block;
+        width: 14.2%;
+        color: #666;
+        text-align: center;
+    }
+
+
+    /*** all the squares in the calendar ***/
+
+    .squares {
+      // margin: 0;
+      padding-top: 10px;
+       text-align: center;
+       position: relative;
+      // height: 70px !important;
+    }
+    .squares > div {
+        height: 70px;
+    }
+
+    .gray-square {
+        background-color: #ddd;
+        color: #ddd;
+        //height: 70px !important;
+        //position: relative;
+    }
+
+    .day-square {
+        //position: relative;
+    }
+
+    .squares > div {
+        list-style-type: none;
+        display: inline-block;
+        width: 14.2%;
+        text-align: center;
+        font-size: 14px;
+        color: #777;
+        border: 1px solid #eee;
+        text-align: center;
+        //margin: auto !important;
+    }
+
+
+    .is-active {
+        border: 2px solid map-get($colors, primary) !important;
+    }
+
+    .square {
+        position: relative;
+    }
+
+    .in-square-day-of-month {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .blue-square {
+       // color: green;
+        background-color: blue;  //map-get($colors, primary);;
+        height: 6px;
+        width: 6px;
+        color: blue;
+    }
+    .in-square-blue-square-position {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+
+    }
+
+    .in-square-analytics {
+        position: absolute;
+        bottom: 0;
+       // right: 0;
+        width: 100%;
+        font-size: 11px;
+        text-align: center;
+        color: green;
+    }
+
+    .key-container {
+        padding-left: 20px;
+    }
+    .key-container > div {
+        padding: 2px;
+    }
+
+
+
+    @media screen and (max-width: 420px) {
+       // .days-of-week li, .days li {width: 12.5%;}
+       // .days li .active {padding: 2px;}
+       /*
+       .squares > div {
+           height: 65px;
+       }
+       .gray-square {
+           height: 65px;
+       }
+        */
+    }   
+
+    @media screen and (max-width:720px) {
+       // .days-of-week li, .days li {width: 13.1%;}
+    
+    }
+
+    /*
+    @media screen and (max-width: 290px) {
+        //.days-of-week li, .days li {width: 12.2%;}
+    }
+    */
 }
