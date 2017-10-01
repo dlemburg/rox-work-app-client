@@ -22,10 +22,29 @@
         </ion-item>
       </ion-col>    
     </ion-row>
-    <div class="totals" margin-top *ngIf="state.avgForecastHours && state.avgActualHours">
+    <!--
+    <h3 *ngIf="state.dates.length" margin-top text-center>Filtered Dates Avgs</h3>
+    <div class="totals" *ngIf="state.avgForecastHours && state.avgActualHours">
       <div>Average Forecast Hours:  {{ state.avgForecastHours }}</div>
       <div>Average Actual Hours:  {{ state.avgActualHours }}</div>
     </div>
+    -->
+    <table *ngIf="state.dates.length" padding margin-top>
+      <tr>
+        <th></th>
+        <th>Forecast GM</th>
+        <th>Forecast CS</th>
+        <th>Actual GM</th>
+        <th>Actual CS</th>
+      </tr>
+      <tr *ngFor="let x of state.dates; let i = index;">
+        <td class="bold" *ngIf="x.date && x.month">{{ months[x.month].abbrev }} {{ x.date }}</td>
+        <td> {{ x.forecastGM }}</td>
+        <td> {{ x.forecastCS }}</td>
+        <td> {{ x.actualGM }}</td>
+        <td> {{ x.actualCS }}</td>
+      </tr>
+    </table>
 
 
 </ion-content>
